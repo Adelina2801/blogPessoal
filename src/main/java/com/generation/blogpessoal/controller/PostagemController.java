@@ -32,13 +32,13 @@ public class PostagemController {
 	@Autowired
 	private PostagemRepository postagemRepository;
 	
-	@Autowired
+    @Autowired
 	private TemaRepository temaRepository;
 	
 	
 	@GetMapping
 	public ResponseEntity<List<Postagem>> getAll(){
-		return ResponseEntity.ok(postagemRepository.findAll()); // é o metodo SELECT * FROM
+		return ResponseEntity.ok(postagemRepository.findAll()); 
 		
 	}	
 		

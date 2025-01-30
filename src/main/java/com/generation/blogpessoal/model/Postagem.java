@@ -15,23 +15,23 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-@Entity    // Indicar que a classe é uma tabela
-@Table (name = "tb_postagens") //Indica o nome da tabela bd
+@Entity    
+@Table (name = "tb_postagens") 
 public class Postagem {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto incremento
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
 	
-	@NotBlank(message = "Este campo é obrigatório") // Titulo da Posta
+	@NotBlank(message = "Este campo é obrigatório") 
 	@Size(min =  5, max = 100, message = "Digite no minimo 5 e no máximo 100 caracteres.")
 	private String titulo;
 	
-	@NotBlank(message = "Este campo é obrigatório") // Titulo da Posta
+	@NotBlank(message = "Este campo é obrigatório") 
 	@Size(min =  10, max = 1000, message = "Digite no minimo 10 e no máximo 1000 caracteres.")
 	private String texto;
 	
-	@UpdateTimestamp   // Ela vai atualizar o horário conforme banco de dados, data e hs do computador
+	@UpdateTimestamp  
 	private LocalDateTime data;
 	
 	@ManyToOne
@@ -42,6 +42,13 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
 	
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	public Tema getTema() {
 		return tema; 
 	}
